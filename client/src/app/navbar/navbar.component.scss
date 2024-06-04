@@ -1,0 +1,56 @@
+$nav-link-bg-color: #89cff0;
+
+.mat-toolbar {
+  background-color: transparent;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.navbar-content {
+  padding: 0.25rem;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(5.1px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.nav-link {
+  border-radius: 1rem;
+  padding: 8px 12px;
+  text-align: center;
+  transition: 0.3s ease-in-out;
+  font-weight: 500;
+
+  a {
+    color: rgba(0, 0, 0, 0.75);
+    text-decoration: none;
+  }
+}
+
+.nav-link-active {
+  border-radius: 1rem;
+  padding: 8px 12px;
+  background-color: $nav-link-bg-color;
+}
+
+.nav-link:hover {
+  background-color: $nav-link-bg-color;
+}
+
+/* Media Queries */
+
+@media (max-width: 600px) {
+  .navbar-content {
+    gap: 0.5rem;
+  }
+  .nav-link {
+    font-size: medium;
+  }
+}
