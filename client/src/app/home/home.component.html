@@ -21,5 +21,28 @@
 </header>
 
 <main class="main">
-  <div class="main-content"></div>
+  <div class="main-content">
+    <mat-grid-list [cols]="columns" rowHeight="2:1" gutterSize="2rem">
+      @for (tile of tileCards; track tile) {
+      <mat-grid-tile>
+        <mat-card class="main-content-card">
+          <mat-card-header>
+            <mat-card-title class="main-content-text">{{
+              tile.title
+            }}</mat-card-title>
+            <mat-card-subtitle class="main-content-text">{{
+              tile.subtitle
+            }}</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            class="main-content-card-image"
+            [src]="tile.imageSrc"
+            [alt]="tile.imageAlt"
+          />
+        </mat-card>
+      </mat-grid-tile>
+      }
+    </mat-grid-list>
+  </div>
 </main>

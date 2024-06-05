@@ -4,6 +4,9 @@ $nav-link-bg-color: #89cff0;
   background-color: transparent;
   margin-top: 16px;
   margin-bottom: 16px;
+  position: fixed;
+  top: 0;
+  z-index: 1;
 }
 
 .navbar-content {

@@ -1,6 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatCardModule } from '@angular/material/card';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { Subscription, distinctUntilChanged } from 'rxjs';
 
 const STAR_ICON = `
 <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
@@ -14,18 +18,49 @@ const COMPUTER_ICON = `
 <svg xmlns="http://www.w3.org/2000/svg" width="800px" height="800px" viewBox="0 0 24 24"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
 `;
 
+export interface TileCard {
+  title: string;
+  subtitle: string;
+  imageSrc: string;
+  imageAlt: string;
+}
+
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatIconModule],
+  imports: [MatIconModule, MatGridListModule, MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
-    // Note that we provide the icon here as a string literal here due to a limitation in
-    // Stackblitz. If you want to provide the icon from a URL, you can use:
-    // `iconRegistry.addSvgIcon('thumbs-up', sanitizer.bypassSecurityTrustResourceUrl('icon.svg'));`
+export class HomeComponent implements OnInit, OnDestroy {
+  columns: number = 2;
+
+  tileCards: TileCard[] = [
+    {
+      title: 'Project',
+      subtitle: 'Wordle',
+      imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      imageAlt: 'Photo of a Shiba Inu',
+    },
+    {
+      title: 'Project',
+      subtitle: 'Wordle',
+      imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      imageAlt: 'Photo of a Shiba Inu',
+    },
+  ];
+
+  private breakpointSubscription: Subscription = new Subscription();
+
+  readonly breakpoint$ = this.breakpointObserver
+    .observe([Breakpoints.Large, Breakpoints.Medium])
+    .pipe(distinctUntilChanged());
+
+  constructor(
+    private iconRegistry: MatIconRegistry,
+    private sanitizer: DomSanitizer,
+    private breakpointObserver: BreakpointObserver
+  ) {
     iconRegistry.addSvgIconLiteral(
       'star',
       sanitizer.bypassSecurityTrustHtml(STAR_ICON)
@@ -35,5 +70,23 @@ export class HomeComponent {
       'computer',
       sanitizer.bypassSecurityTrustHtml(COMPUTER_ICON)
     );
+  }
+
+  ngOnInit(): void {
+    this.breakpointSubscription = this.breakpoint$.subscribe(() =>
+      this.breakpointChanged()
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.breakpointSubscription.unsubscribe();
+  }
+
+  private breakpointChanged() {
+    if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
+      this.columns = 2;
+    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+      this.columns = 1;
+    }
   }
 }
