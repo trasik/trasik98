@@ -22,17 +22,19 @@
 
 <main class="main">
   <div class="main-content">
-    <mat-grid-list [cols]="columns" rowHeight="2:1" gutterSize="2rem">
-      @for (tile of tileCards; track tile) {
+    <mat-grid-list [cols]="columns" rowHeight="2:1" gutterSize="4rem">
+      @for (tile of tileCards; track tile) { @if (columns == 1) {
       <mat-grid-tile>
         <mat-card class="main-content-card">
           <mat-card-header>
             <mat-card-title class="main-content-text">{{
               tile.title
             }}</mat-card-title>
-            <mat-card-subtitle class="main-content-text">{{
-              tile.subtitle
-            }}</mat-card-subtitle>
+            <mat-card-subtitle
+              id="main-content-text-big"
+              class="main-content-text"
+              >{{ tile.subtitle }}</mat-card-subtitle
+            >
           </mat-card-header>
           <img
             mat-card-image
@@ -42,7 +44,30 @@
           />
         </mat-card>
       </mat-grid-tile>
-      }
+      } @else {
+      <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows">
+        <mat-card class="main-content-card">
+          <mat-card-header>
+            <mat-card-title class="main-content-text">{{
+              tile.title
+            }}</mat-card-title>
+            <mat-card-subtitle
+              id="main-content-text-big"
+              class="main-content-text"
+              >{{ tile.subtitle }}</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            class="main-content-card-image"
+            [src]="tile.imageSrc"
+            [alt]="tile.imageAlt"
+          />
+        </mat-card>
+      </mat-grid-tile>
+      } }
     </mat-grid-list>
   </div>
 </main>
+
+<footer></footer>

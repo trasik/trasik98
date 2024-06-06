@@ -23,6 +23,8 @@ export interface TileCard {
   subtitle: string;
   imageSrc: string;
   imageAlt: string;
+  cols: number;
+  rows: number;
 }
 
 @Component({
@@ -33,7 +35,7 @@ export interface TileCard {
   styleUrl: './home.component.scss',
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  columns: number = 2;
+  columns: number = 7;
 
   tileCards: TileCard[] = [
     {
@@ -41,12 +43,32 @@ export class HomeComponent implements OnInit, OnDestroy {
       subtitle: 'Wordle',
       imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       imageAlt: 'Photo of a Shiba Inu',
+      cols: 3,
+      rows: 4,
     },
     {
       title: 'Project',
       subtitle: 'Wordle',
       imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
       imageAlt: 'Photo of a Shiba Inu',
+      cols: 4,
+      rows: 4,
+    },
+    {
+      title: 'Project',
+      subtitle: 'Wordle',
+      imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      imageAlt: 'Photo of a Shiba Inu',
+      cols: 4,
+      rows: 4,
+    },
+    {
+      title: 'Project',
+      subtitle: 'Wordle',
+      imageSrc: 'https://material.angular.io/assets/img/examples/shiba2.jpg',
+      imageAlt: 'Photo of a Shiba Inu',
+      cols: 3,
+      rows: 4,
     },
   ];
 
@@ -84,7 +106,7 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   private breakpointChanged() {
     if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
-      this.columns = 2;
+      this.columns = 7;
     } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
       this.columns = 1;
     }
