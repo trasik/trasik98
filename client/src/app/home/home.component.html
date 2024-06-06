@@ -24,7 +24,7 @@
   <div class="main-content">
     <mat-grid-list [cols]="columns" rowHeight="2:1" gutterSize="4rem">
       @for (tile of tileCards; track tile) { @if (columns == 1) {
-      <mat-grid-tile>
+      <mat-grid-tile class="main-content-tile">
         <mat-card class="main-content-card">
           <mat-card-header>
             <mat-card-title class="main-content-text">{{
@@ -45,7 +45,11 @@
         </mat-card>
       </mat-grid-tile>
       } @else {
-      <mat-grid-tile [colspan]="tile.cols" [rowspan]="tile.rows">
+      <mat-grid-tile
+        class="main-content-tile"
+        [colspan]="tile.cols"
+        [rowspan]="tile.rows"
+      >
         <mat-card class="main-content-card">
           <mat-card-header>
             <mat-card-title class="main-content-text">{{
@@ -70,4 +74,23 @@
   </div>
 </main>
 
-<footer></footer>
+<footer class="footer">
+  <div class="footer-content">
+    <h6>&copy; Torendra Rasik</h6>
+    <ul class="mat-typography footer-contact-list">
+      <li id="footer-contact-list-title" class="mat-title-large">Contact</li>
+      <li class="mat-body-large">
+        <a href="https://github.com/trasik">Github</a>
+      </li>
+      <li class="mat-body-large">
+        <a href="https://www.linkedin.com/in/torendrarasik/">Linkedin</a>
+      </li>
+      <li class="mat-body-large">
+        <a href="https://x.com/DownbadT8">Twitter / X</a>
+      </li>
+      <li class="mat-body-large">
+        <a href="mailto:torendrarasik@gmail.com">Email</a>
+      </li>
+    </ul>
+  </div>
+</footer>

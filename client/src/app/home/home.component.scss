@@ -6,6 +6,7 @@
   justify-content: center;
   justify-items: center;
   padding-top: 15%;
+  margin-bottom: 10%;
 }
 
 .header-content {
@@ -49,9 +50,7 @@
 
 .main {
   width: 90%;
-  height: 100%;
   margin: auto;
-  margin-top: 50px;
 }
 
 mat-card-header {
@@ -60,7 +59,7 @@ mat-card-header {
   justify-items: right;
 }
 
-mat-grid-tile:hover {
+.main-content-tile:hover {
   transition: 0.5s;
   transform: translateY(1%);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
@@ -88,6 +87,46 @@ mat-grid-tile:hover {
 #main-content-text-big {
   margin-top: 10px;
   font-size: 40px;
+}
+
+/* Footer */
+
+.footer {
+  width: 90%;
+  margin: auto;
+  margin-top: 10%;
+}
+
+.footer-content {
+  display: flex;
+
+  h6 {
+    flex: 1;
+  }
+}
+
+.footer-contact-list {
+  list-style-type: none;
+  flex: 1;
+  margin: auto;
+
+  li {
+    a {
+      line-height: 3rem;
+      color: inherit;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: #89cff0;
+      transition: color 0.2s;
+    }
+  }
+}
+
+#footer-contact-list-title {
+  margin-bottom: 1rem;
+  font-weight: bold;
 }
 
 @media (max-width: 600px) {
