@@ -1,10 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Subscription, distinctUntilChanged } from 'rxjs';
 
 const STAR_ICON = `
 <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
@@ -34,7 +32,7 @@ export interface TileCard {
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
   columns: number = 7;
 
   tileCards: TileCard[] = [
@@ -72,16 +70,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
   ];
 
-  private breakpointSubscription: Subscription = new Subscription();
-
-  readonly breakpoint$ = this.breakpointObserver
-    .observe([Breakpoints.Large, Breakpoints.Medium])
-    .pipe(distinctUntilChanged());
-
   constructor(
     private iconRegistry: MatIconRegistry,
-    private sanitizer: DomSanitizer,
-    private breakpointObserver: BreakpointObserver
+    private sanitizer: DomSanitizer
   ) {
     iconRegistry.addSvgIconLiteral(
       'star',
@@ -94,20 +85,10 @@ export class HomeComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnInit(): void {
-    this.breakpointSubscription = this.breakpoint$.subscribe(() =>
-      this.breakpointChanged()
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.breakpointSubscription.unsubscribe();
-  }
-
-  private breakpointChanged() {
-    if (this.breakpointObserver.isMatched(Breakpoints.Large)) {
+  @HostListener('window:resize', []) updateColumns() {
+    if (window.innerWidth >= 992) {
       this.columns = 7;
-    } else if (this.breakpointObserver.isMatched(Breakpoints.Medium)) {
+    } else {
       this.columns = 1;
     }
   }
