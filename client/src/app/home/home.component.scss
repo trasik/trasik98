@@ -107,10 +107,36 @@ mat-card-header {
   }
 }
 
+.footer-spotify {
+  background: beige;
+  padding: 15px;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    width: 60px;
+    height: 60px;
+  }
+
+  .spotify-song {
+    padding-top: 5%;
+    padding-left: 10%;
+
+    p:nth-child(1) {
+      font-style: italic;
+    }
+
+    p:nth-child(2) {
+      font-weight: bold;
+    }
+  }
+}
+
 .footer-contact-list {
   list-style-type: none;
-  flex: 1;
   margin: auto;
+  flex: 1;
   padding-left: 25%;
 
   li {
@@ -132,6 +158,11 @@ mat-card-header {
       transition: color 0.2s;
     }
   }
+}
+
+#footer-copyright {
+  padding-top: 10%;
+  font-size: 1.3rem;
 }
 
 #footer-contact-list-title {
@@ -176,6 +207,20 @@ mat-card-header {
   #main-content-text-big {
     margin-top: 0;
     font-size: 25px;
+  }
+
+  .spotify-song {
+    p:nth-child(1) {
+      font-size: 12px;
+    }
+    p:nth-child(2) {
+      font-size: 12px;
+      font-weight: bold;
+    }
+  }
+
+  #footer-copyright {
+    font-size: 1rem;
   }
 }
 

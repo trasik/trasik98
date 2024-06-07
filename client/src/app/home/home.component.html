@@ -77,7 +77,20 @@
 <footer class="footer">
   <div class="footer-content">
     <div class="footer-content-items">
-      <h6>&copy; Torendra Rasik</h6>
+      <div class="footer-left">
+        <div class="footer-spotify">
+          <mat-icon
+            svgIcon="spotify"
+            aria-hidden="false"
+            aria-label="Example thumbs up SVG icon"
+          ></mat-icon>
+          <div class="spotify-song">
+            <p>On repeat</p>
+            <p>{{ currentSpotifySong }}</p>
+          </div>
+        </div>
+        <p id="footer-copyright">&copy; Torendra Rasik &bull; New York</p>
+      </div>
     </div>
     <div class="footer-content-items">
       <ul class="mat-typography footer-contact-list">
