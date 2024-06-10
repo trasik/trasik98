@@ -1,4 +1,4 @@
-<header class="header">
+<header class="header" @fadein @flyin-vertical>
   <div class="header-content">
     <h1 class="header-content-title">Hi! I'm Torendra.</h1>
     <h1 class="header-content-title">An Engineer.</h1>
@@ -20,7 +20,7 @@
   </div>
 </header>
 
-<main class="main">
+<main class="main" @stagger-cards>
   <div class="main-content">
     <mat-grid-list [cols]="columns" rowHeight="2:1" gutterSize="4rem">
       @for (tile of tileCards; track tile) { @if (columns == 1) {
@@ -74,7 +74,7 @@
   </div>
 </main>
 
-<footer class="footer">
+<footer class="footer" @fadein @flyin-vertical>
   <div class="footer-content">
     <div class="footer-content-items">
       <div class="footer-left">

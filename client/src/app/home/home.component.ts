@@ -3,6 +3,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry, MatIconModule } from '@angular/material/icon';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
+import {
+  animate,
+  query,
+  stagger,
+  style,
+  transition,
+  trigger,
+} from '@angular/animations';
 
 const STAR_ICON = `
 <?xml version="1.0" encoding="utf-8"?><!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
@@ -62,9 +70,37 @@ export interface TileCard {
   imports: [MatIconModule, MatGridListModule, MatCardModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+  animations: [
+    trigger('fadein', [
+      transition('void => *', [style({ opacity: 0 }), animate(800)]),
+    ]),
+    trigger('flyin-vertical', [
+      transition('void => *', [
+        style({ transform: 'translateY(-10%)' }),
+        animate(800, style({ transform: 'translateY(0%)' })),
+      ]),
+    ]),
+    trigger('stagger-cards', [
+      transition('* => *', [
+        query(
+          '.main-content-tile',
+          style({ opacity: 0, transform: 'translateX(-40px)' })
+        ),
+        query(
+          '.main-content-tile',
+          stagger('200ms', [
+            animate(
+              '300ms 300ms ease-out',
+              style({ opacity: 1, transform: 'translateX(0)' })
+            ),
+          ])
+        ),
+      ]),
+    ]),
+  ],
 })
 export class HomeComponent {
-  columns: number = 7;
+  columns: number = window.innerWidth >= 992 ? 7 : 1;
 
   currentSpotifySong =
     spotifySongs[Math.floor(Math.random() * spotifySongs.length)];
