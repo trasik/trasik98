@@ -81,7 +81,7 @@ export interface TileCard {
       ]),
     ]),
     trigger('stagger-cards', [
-      transition('* => *', [
+      transition('void => *', [
         query(
           '.main-content-tile',
           style({ opacity: 0, transform: 'translateX(-40px)' })
