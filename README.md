@@ -116,7 +116,11 @@ I wanted to rebuild this project with the experience I've gained in the industry
 ## Roadmap
 
 - [x] Retiring Angular (Love it, but it's more than this project needs)
-- [] Transfer current application to Sveltekit
+- [x] Transfer current application to Sveltekit
+- [] Custom page for svelte routing errors
+- [] About page
+- [] Work/Projects page
+- [] Notes page
 
 See the [open issues](https://github.com/trasik/trasik98/issues) for a full list of proposed features (and known issues).
 

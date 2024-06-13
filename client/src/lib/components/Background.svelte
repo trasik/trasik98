@@ -1,0 +1,65 @@
+<div class="background-container"></div>
+
+<style>
+	.background-container {
+		--mask: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 1) 0,
+				rgba(0, 0, 0, 1) 40%,
+				rgba(0, 0, 0, 0) 95%,
+				rgba(0, 0, 0, 0) 0
+			)
+			100% 50% / 100% 100% repeat-x;
+
+		width: 100vw;
+		height: 100vh;
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+		z-index: -1;
+		background: linear-gradient(45deg, #cdb4db, #ffc8dd, #ffafcc, #bde0fe, #a2d2ff);
+		background-size: 600% 600%;
+		opacity: 0.4;
+
+		-webkit-mask: var(--mask);
+		mask: var(--mask);
+
+		-webkit-animation: aurora 15s ease infinite;
+		-moz-animation: aurora 15s ease infinite;
+		animation: aurora 15s ease infinite;
+	}
+
+	@-webkit-keyframes aurora {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@-moz-keyframes aurora {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+	@keyframes aurora {
+		0% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
+		100% {
+			background-position: 0% 50%;
+		}
+	}
+</style>
