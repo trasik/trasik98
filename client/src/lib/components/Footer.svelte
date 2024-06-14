@@ -1,6 +1,5 @@
 <script lang="ts">
 	import type { SpotifySong } from '$lib/interfaces';
-	import spotifyIcon from '$lib/assets/spotify-icon.svg';
 	import svgIcons from '$lib/assets/svg-icons';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -42,9 +41,9 @@
 		<div class="ml-16 flex flex-auto justify-center md:ml-0">
 			<div>
 				<div
-					class=" flex items-center justify-center rounded-full bg-amber-100 p-8 transition duration-500 ease-in-out hover:scale-105"
+					class=" flex items-center justify-center rounded-full bg-amber-100 p-8 transition duration-500 ease-in-out hover:scale-105 dark:bg-[#978256]"
 				>
-					<img class="md:w-[48px]" alt="Spotify icon" src={spotifyIcon} />
+					<span class="w-[64px] md:w-[48px]">{@html svgIcons.spotify}</span>
 					<div class="ml-4">
 						<p class="font-medium">On repeat</p>
 						<a
@@ -63,7 +62,7 @@
 				<li class="mb-4"><p class="text-xl font-medium">Contact</p></li>
 				<li>
 					<a
-						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400"
+						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400 dark:fill-white dark:hover:fill-sky-600 dark:hover:text-sky-600"
 						href="https://github.com/trasik"
 					>
 						<span class="my-auto mr-4">{@html svgIcons.github}</span>Github
@@ -71,7 +70,7 @@
 				</li>
 				<li>
 					<a
-						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400"
+						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400 dark:fill-white dark:hover:fill-sky-600 dark:hover:text-sky-600"
 						href="https://www.linkedin.com/in/torendrarasik/"
 					>
 						<span class="my-auto mr-4">{@html svgIcons.linkedin}</span>LinkedIn
@@ -79,7 +78,7 @@
 				</li>
 				<li>
 					<a
-						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400"
+						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400 dark:fill-white dark:hover:fill-sky-600 dark:hover:text-sky-600"
 						href="https://x.com/DownbadT8"
 					>
 						<span class="my-auto -ml-[.15rem] mr-4">{@html svgIcons.x}</span>X
@@ -87,7 +86,7 @@
 				</li>
 				<li>
 					<a
-						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400"
+						class="flex transition hover:scale-105 hover:fill-sky-400 hover:text-sky-400 dark:fill-white dark:hover:fill-sky-600 dark:hover:text-sky-600"
 						href="https://x.com/DownbadT8"
 					>
 						<span class="my-auto mr-4">{@html svgIcons.email}</span>Email

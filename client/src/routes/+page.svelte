@@ -1,6 +1,5 @@
 <script lang="ts">
-	import codeIcon from '$lib/assets/code-icon.svg';
-	import gameIcon from '$lib/assets/gaming-icon.svg';
+	import svgIcons from '$lib/assets/svg-icons';
 	import * as Card from '$lib/components/ui/card';
 	import type { HomeCard } from '$lib/interfaces';
 	import { fly, scale } from 'svelte/transition';
@@ -69,18 +68,19 @@
 				I like to break things and make them better.
 			</h4>
 
-			<img
+			<span
 				in:scale={{ duration: 1000, delay: 1500, opacity: 0, start: 0.1, easing: quintOut }}
-				class="absolute -right-20 -top-10 w-[4rem] sm:-right-8 sm:-top-5 sm:w-[2rem]"
-				alt="Coding icon"
-				src={codeIcon}
-			/>
-			<img
+				class="absolute -left-20 bottom-56 w-[5rem] stroke-black dark:stroke-white sm:-left-8 sm:bottom-[8.5rem] sm:w-[2rem]"
+			>
+				{@html svgIcons.gaming}
+			</span>
+
+			<span
 				in:scale={{ duration: 1000, delay: 1500, opacity: 0, start: 0.1, easing: quintOut }}
-				class="absolute -left-20 bottom-56 w-[5rem] sm:-left-8 sm:bottom-[8.5rem] sm:w-[2rem]"
-				alt="Gaming icon"
-				src={gameIcon}
-			/>
+				class="absolute -right-20 -top-10 w-[4rem] stroke-black dark:stroke-white sm:-right-8 sm:-top-5 sm:w-[2rem]"
+			>
+				{@html svgIcons.code}
+			</span>
 		</div>
 	</header>
 	{#if isColSpanNeeded}
